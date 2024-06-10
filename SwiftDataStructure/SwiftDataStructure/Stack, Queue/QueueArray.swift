@@ -20,8 +20,8 @@ import Foundation
 
 protocol Queue {
     associatedtype Element
-    mutating func enQueue(_ element: Element)
-    mutating func deQueue() -> Element?
+    mutating func enqueue(_ element: Element)
+    mutating func dequeue() -> Element?
     var isEmpty: Bool { get }
     var peek: Element? { get }
 }
@@ -37,11 +37,11 @@ struct QueueArray<T>: Queue {
         return array.first
     }
     
-    mutating func enQueue(_ element: T) {
+    mutating func enqueue(_ element: T) {
         array.append(element)
     }
     
-    mutating func deQueue() -> T? {
+    mutating func dequeue() -> T? {
         return isEmpty ? nil : array.removeFirst()
     }
 }
