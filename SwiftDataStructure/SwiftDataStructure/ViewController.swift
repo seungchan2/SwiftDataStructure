@@ -22,13 +22,13 @@ class ViewController: UIViewController {
         list.append(value: 2)
         list.append(value: 3)
         list.printList()        // 출력: 1 -> 2 -> 3 -> nil
-
+        
         list.deleteFirst()
         list.printList()        // 출력: 2 -> 3 -> nil
-
+        
         list.delete(value: 3)
         list.printList()        // 출력: 2 -> nil
-
+        
     }
     
     // 이중 연결 리스트 사용 예제
@@ -38,13 +38,13 @@ class ViewController: UIViewController {
         list.append(value: 2)
         list.append(value: 3)
         list.printList()        // 출력: 1 <-> 2 <-> 3 <-> nil
-
+        
         list.deleteFirst()
         list.printList()        // 출력: 2 <-> 3 <-> nil
-
+        
         list.deleteLast()
         list.printList()        // 출력: 2 <-> nil
-
+        
         list.delete(value: 2)
         list.printList()        // 출력: nil
     }
@@ -56,13 +56,13 @@ class ViewController: UIViewController {
         list.append(value: 2)
         list.append(value: 3)
         list.printList()        // 출력: 1 <-> 2 <-> 3 <-> nil
-
+        
         list.deleteFirst()
         list.printList()        // 출력: 2 <-> 3 <-> nil
-
+        
         list.deleteLast()
         list.printList()        // 출력: 2 <-> nil
-
+        
         list.delete(value: 2)
         list.printList()        // 출력: nil
     }
@@ -77,12 +77,72 @@ class ViewController: UIViewController {
     
     private func actionQueueArray() {
         var queueArray = QueueArray<Int>()
-        queueArray.enQueue(1)
-        queueArray.enQueue(2)
-        queueArray.enQueue(3)
+        queueArray.enqueue(1)
+        queueArray.enqueue(2)
+        queueArray.enqueue(3)
         print(queueArray)
-        queueArray.deQueue()
+        queueArray.dequeue()
         print(queueArray)
+    }
+    
+    private func actionTrees() {
+        let beverages = TreeNode("Beverages")
+        
+        let hot = TreeNode("Hot")
+        let cold = TreeNode("Cold")
+        
+        beverages.add(hot)
+        beverages.add(cold)
+    }
+    
+    private func makeBeverageTree() -> TreeNode<String> {
+        let tree = TreeNode("Beverages")
+        
+        let hot = TreeNode("hot")
+        let cold = TreeNode("cold")
+        
+        let tea = TreeNode("tea")
+        let coffee = TreeNode("coffee")
+        let chocolate = TreeNode("cocoa")
+        
+        let blackTea = TreeNode("black")
+        let greenTea = TreeNode("green")
+        let chaiTea = TreeNode("chai")
+        
+        let soda = TreeNode("soda")
+        let milk = TreeNode("milk")
+        
+        let gingerAle = TreeNode("ginger ale")
+        let bitterLemon = TreeNode("bitter lemon")
+        
+        tree.add(hot)
+        tree.add(cold)
+        
+        hot.add(tea)
+        hot.add(coffee)
+        hot.add(chocolate)
+        
+        cold.add(soda)
+        cold.add(milk)
+        
+        tea.add(blackTea)
+        tea.add(greenTea)
+        tea.add(chaiTea)
+        
+        soda.add(gingerAle)
+        soda.add(bitterLemon)
+        
+        return tree
+    }
+    
+    private func actionMakeBeverageTrees() {
+        let tree = makeBeverageTree()
+        tree.forEachDepthFirst { print($0.value) }
+    }
+    
+    private func actionTreeLevelOrder() {
+        let tree = makeBeverageTree()
+        tree.forEachLevelOrder { print($0.value) }
     }
 }
 
